@@ -1,0 +1,40 @@
+<html>
+<input type='text' id='inputData'>
+<br>
+<button onclick="test(document.getElementById('inputData').value, 'message');">message</button>
+<button onclick="test(document.getElementById('inputData').value, 'save')">save</button>
+<button onclick="test(document.getElementById('inputData').value, 'load')">load</button>
+
+<button id="myCustomEventDiv" style="display: none;">extensionBtn</button>
+<script>
+    document.getElementById('myCustomEventDiv').addEventListener('resEvent', function(e){
+        res(e.detail);
+    })
+    
+    function test(str, op) {
+        var ob = {}
+
+        switch(op) {
+            case 'message' :
+            ob.op = 'message';
+            break;
+            case 'save':
+            ob.op = 'save';
+            break;
+            case 'load':
+            ob.op = 'load';
+            break;
+        }
+
+        ob.data = str;
+
+        var event = new CustomEvent("myCustomEvent", {detail: ob});
+        document.getElementById('myCustomEventDiv').dispatchEvent(event);
+    }
+
+    function res(param) {
+        alert('res: ' + param);
+    };
+</script>
+
+</html>
