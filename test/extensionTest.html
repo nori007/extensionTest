@@ -4,29 +4,43 @@
 <button onclick="test(document.getElementById('inputData').value, 'message');">message</button>
 <button onclick="test(document.getElementById('inputData').value, 'save')">save</button>
 <button onclick="test(document.getElementById('inputData').value, 'load')">load</button>
+<button onclick="test(document.getElementById('inputData').value, 'remove')">remove</button>
+<button onclick="test(document.getElementById('inputData').value, 'all')">all</button>
+<button onclick="myTest()">myTest</button>
 
 <button id="myCustomEventDiv" style="display: none;">extensionBtn</button>
 <script>
     document.getElementById('myCustomEventDiv').addEventListener('resEvent', function(e){
         res(e.detail);
     })
+
+    function myTest() {
+        //myTest.callFunc();
+    }
     
     function test(str, op) {
         var ob = {}
 
         switch(op) {
             case 'message' :
-            ob.op = 'message';
-            break;
+                ob.op = 'message';
+                break;
             case 'save':
-            ob.op = 'save';
-            break;
+                ob.op = 'save';
+                break;
             case 'load':
-            ob.op = 'load';
-            break;
+                ob.op = 'load';
+                break;
+            case 'remove':
+                ob.op = 'remove';
+                break;
+            case 'all':
+                ob.op = 'all';
+                break;
         }
 
         ob.data = str;
+
 
         var event = new CustomEvent("myCustomEvent", {detail: ob});
         document.getElementById('myCustomEventDiv').dispatchEvent(event);

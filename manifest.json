@@ -2,6 +2,7 @@
     "name": "nori",
     "description": "nori sample extension",
     "version": "1.0",
+    "author" : "nori",
     "browser_action": {
         "default_icon": "icon.png"
     },
@@ -12,12 +13,22 @@
         {
             "matches": [
                 "https://172.16.10.114:6800/*",
-                "https://127.0.0.1:8080/*"
+                "https://172.16.10.205:6800/*",
+                "https://127.0.0.1/*"
             ],
+             
+            // //firefox: port 없이, 실서비스하면 port 안붙으니 괜찮을듯.
+            // "matches": [
+            //     "https://172.16.10.114/*",
+            //     "https://172.16.10.205/*",
+            //     "https://127.0.0.1/*"
+            // ],
+            
             "js": [
                 "extension.js"
-            ]
+            ],
+            "run_at": "document_end"
         }
-    ]
+    ],
     "manifest_version": 2
 }
